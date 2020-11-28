@@ -866,6 +866,24 @@ public class DatastoreFacadeTest {
 		// Expected Output
 		assertTrue(returnVal);
 	}
+	
+	/**
+	 * ID: QicFix-DatastoreFacade-002-createClient-001 Purpose: Test if method calls
+	 * client.create() and returns true Preconditions: mock of Client.class, Input:
+	 * datastoreFacade.createClient(clientMock) Expected Output: true
+	 */
+	@Test
+	public void testCreateTower_001() {
+		// Test Setup:
+		Tower towerMock = mock(Tower.class);
+		when(towerMock.create()).thenReturn(true);
+		// Test Input:
+		boolean testReturn = datastoreFacade.createTower(towerMock);
+		// Expected Output:
+		assertTrue(testReturn);
+		verify(towerMock).create();
+	}
+	
 
 	// *****************Helper methods************************************
 
