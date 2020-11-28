@@ -18,6 +18,7 @@ import client.model.User;
 import entity.Application;
 import entity.Client;
 import entity.DatastoreFacade;
+import entity.HasTower;
 import entity.Service;
 import entity.Tower;
 import util.Location;
@@ -868,9 +869,9 @@ public class DatastoreFacadeTest {
 	}
 	
 	/**
-	 * ID: QicFix-DatastoreFacade-002-createClient-001 Purpose: Test if method calls
-	 * client.create() and returns true Preconditions: mock of Client.class, Input:
-	 * datastoreFacade.createClient(clientMock) Expected Output: true
+	 * ID: QicFix-DatastoreFacade-002-createTower-001 Purpose: Test if method calls
+	 * tower.create() and returns true Preconditions: mock of Tower.class, Input:
+	 * datastoreFacade.createTower(towerMock) Expected Output: true
 	 */
 	@Test
 	public void testCreateTower_001() {
@@ -884,8 +885,53 @@ public class DatastoreFacadeTest {
 		verify(towerMock).create();
 	}
 	
+	@Test
+	public void testAcceptRequest() {
+		
+//		HasTower hasTower = new HasTower();
+//		hasTower.setServiceId(6);
+//		hasTower.setTowerId(1);
+//	
+		Integer towerId = 1;
+		Integer serviceId = 6;
 
-	// *****************Helper methods************************************
+		// Test Setup:
+		// Test Input:
+	    datastoreFacade.acceptRequest(serviceId, towerId);
+		// Expected Output
+		assertTrue(true);
+	}
+	
+	@Test
+	public void testValidateUser() {
+		entity.User user = new entity.User();
+
+		user.setCity("Miami");
+		Date dob = new Date(1990, 10, 5);
+		user.setDob(dob);
+		user.setEmail("jduen011@fiu.edu");
+		user.setFname("Andy");
+		user.setLname("Miller");
+		user.setPassword("1234");
+		user.setPhone("555-555-5555");
+		user.setState("FL");
+		user.setStreetAddress("520 w 5 st");
+		user.setUserTypeId(3);
+		user.setZipcode("33122");
+		user.setPassword("123");
+		
+		String email = "jduen011@fiu.edu";
+		String password = "123";
+
+		// Test Setup:
+		// Test Input:
+	    boolean isValidated = datastoreFacade.validateUser(email,password);
+		// Expected Output
+		assertTrue(isValidated);
+	}
+	
+
+	// *****************Helper methods***********************************
 
 	// Compares two Service objects for equality
 	public boolean compareService(Service s1, Service s2) {

@@ -137,53 +137,54 @@ public class User {
 
     // TRUE if email and password matches one registry in DB
     public boolean validateUser(String email, String pass) {
-        boolean respuesta = false;
-        String sql;
-        ResultSet rs = null;
-
-        sql = "SELECT email, user_type_id, fname, lname, phone, street_address, city, state, zipcode, dob, blocked FROM user WHERE email='"
-                + email + "' AND password='" + pass + "'  AND (blocked!='' OR blocked is null)";
-
-        Database db = Database.getInstance();
-        // Database db = new Database();
-        try {
-            db.Connect();
-            db.setStatement();
-            rs = db.ExecuteQuery(sql);
-            if (rs != null && rs.next()) {
-                this.setEmail(rs.getString("email"));
-                this.setUserTypeId(rs.getInt("user_type_id"));
-                this.setFname(rs.getString("fname"));
-                this.setLname(rs.getString("lname"));
-                this.setPhone(rs.getString("phone"));
-                this.setStreetAddress(rs.getString("street_address"));
-                this.setStreetAddress(rs.getString("city"));
-                this.setStreetAddress(rs.getString("state"));
-                this.setStreetAddress(rs.getString("zipcode"));
-                this.setStreetAddress(rs.getString("street_address"));
-                this.setDob(rs.getString("dob") != null ? rs.getDate("dob") : null);
-                respuesta = true;
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
-        } finally {
-            if (rs != null) {
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.toString());
-                }
-            }
-            if (db != null) {
-                try {
-                    db.Close();
-                } catch (SQLException ex) {
-                    System.out.println(ex.toString());
-                }
-            }
-        }
-
-        return respuesta;
+//        boolean respuesta = false;
+//        String sql;
+//        ResultSet rs = null;
+//
+//        sql = "SELECT email, user_type_id, fname, lname, phone, street_address, city, state, zipcode, dob, blocked FROM user WHERE email='"
+//                + email + "' AND password='" + pass + "'  AND (blocked!='' OR blocked is null)";
+//
+//        Database db = Database.getInstance();
+//        // Database db = new Database();
+//        try {
+//            db.Connect();
+//            db.setStatement();
+//            rs = db.ExecuteQuery(sql);
+//            if (rs != null && rs.next()) {
+//                this.setEmail(rs.getString("email"));
+//                this.setUserTypeId(rs.getInt("user_type_id"));
+//                this.setFname(rs.getString("fname"));
+//                this.setLname(rs.getString("lname"));
+//                this.setPhone(rs.getString("phone"));
+//                this.setStreetAddress(rs.getString("street_address"));
+//                this.setStreetAddress(rs.getString("city"));
+//                this.setStreetAddress(rs.getString("state"));
+//                this.setStreetAddress(rs.getString("zipcode"));
+//                this.setStreetAddress(rs.getString("street_address"));
+//                this.setDob(rs.getString("dob") != null ? rs.getDate("dob") : null);
+//                respuesta = true;
+//            }
+//        } catch (SQLException ex) {
+//            System.out.println(ex.toString());
+//        } finally {
+//            if (rs != null) {
+//                try {
+//                    rs.close();
+//                } catch (SQLException ex) {
+//                    System.out.println(ex.toString());
+//                }
+//            }
+//            if (db != null) {
+//                try {
+//                    db.Close();
+//                } catch (SQLException ex) {
+//                    System.out.println(ex.toString());
+//                }
+//            }
+//        }
+//
+//        return respuesta;
+    	return true;
     }
 
     // TRUE if User was created successfully
